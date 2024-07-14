@@ -6,10 +6,13 @@ function Kakaomap() {
   useEffect(() => {
     const container = document.getElementById('map')
     const options = {
-      center: new kakao.maps.LatLng(33.450701, 126.570667),
-      level: 3,
+      center: new kakao.maps.LatLng(36.2024, 127.4612),
+      level: 13,
     }
     const map = new kakao.maps.Map(container, options)
+
+    var zoomControl = new kakao.maps.ZoomControl()
+    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT)
 
     // 사용자의 현재 위치를 가져와 지도 중심 좌표로 설정하는 함수
     const updateCurrentLocation = () => {

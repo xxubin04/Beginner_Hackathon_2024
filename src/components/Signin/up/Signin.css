@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh; /* 화면의 세로 중앙에 배치 */
+}
+
+fieldset {
+  border: none;
+}
+
+form {
+  width: 400px;
+}
+
+form p,
+form h2 {
+  text-align: center;
+  font-family: 'Jua', sans-serif;
+}
+
+div.signin {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* 입력 필드와 버튼 사이의 간격 */
+  font-family: 'Jua', sans-serif;
+}
+
+div.signin input {
+  width: 300px;
+  box-sizing: border-box;
+  height: 40px;
+  font-family: 'Jua', sans-serif;
+}
+
+div.signin label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Jua', sans-serif;
+}
+
+button {
+  color: white;
+  background-color: #96dfe4;
+  border: none;
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
