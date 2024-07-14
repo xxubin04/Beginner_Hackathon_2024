@@ -15,10 +15,19 @@ const Navigation = () => {
           <Nav className="me-auto">
             <NavDropdown title="플로깅 커뮤니티" id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to="/busan">
-                1
+                부산시 
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">2</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/seoul">서울시</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/gangwon">강원도</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/gyeonggi">경기도</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/gyeongnam">경상남도</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/gyeongbook">경상북도</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/ulsan">울산시</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/incheon">인천시</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/jeonnam">전라남도</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/jeonbook">전라북도</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/jeju">제주도</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/chungnam">충청남도</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>
