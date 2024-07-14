@@ -3,7 +3,7 @@ import './Signup.css'
 function Signup() {
   return (
     <section>
-      <form action="">
+      <form action="member/register" method="POST">
         <h2>회원가입</h2>
         <fieldset>
           <div class="signup">

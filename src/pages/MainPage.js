@@ -13,7 +13,6 @@ function MainPage() {
         style={{ width: '100%', height: '60vh', paddingTop: '20px' }}
       >
         <Kakaomap />
-        <h1>My App</h1>
         <RegionDataComponent />
       </div>
     </div>
