@@ -13,6 +13,8 @@ import JeonnamPage from './pages/JeonnamPage'
 import JeonbookPage from './pages/JeonbookPage'
 import JejuPage from './pages/JejuPage'
 import ChungnamPage from './pages/ChungnamPage'
+import SignupPage from './pages/SignupPage'
+import SigninPage from './pages/SigninPage'
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
         <Route path="/jeonbook" element={<JeonbookPage />} />
         <Route path="/jeju" element={<JejuPage />} />
         <Route path="/chungnam" element={<ChungnamPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/signin" element={<SigninPage />} />
       </Routes>
     </Router>
   )
