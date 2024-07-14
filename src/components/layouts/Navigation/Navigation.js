@@ -31,8 +31,12 @@ const Navigation = () => {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="#signin">로그인</Nav.Link>
-            <Nav.Link href="#signup">회원가입</Nav.Link>
+            <Nav.Link as={Link} to="/signin">
+              로그인
+            </Nav.Link>
+            <Nav.Link as={Link} to="/signup">
+              회원가입
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
