@@ -1,19 +1,17 @@
-import React from "react"
-import "./App.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Navigation from "./components/layouts/Navigation/Navigation";
-import Kakaomap from "./components/Kakaomap/Kakaomap";
-import { Container } from "react-bootstrap";
+import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import MainPage from './pages/MainPage'
+import BusanPage from './pages/BusanPage'
 
 function App() {
-  return ( 
-    <div className="App">
-      <Navigation />
-      <div className="container" style={{width: '100%', height: '60vh', paddingTop: '20px' }}>
-      <Kakaomap />
-      </div>
-    </div>
-  );
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/busan" element={<BusanPage />} />
+      </Routes>
+    </Router>
+  )
 }
 
-export default App;
+export default App
