@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
+import axios from 'axios'
 
 const { kakao } = window
 
-function Kakaomap() {
+function Kakaomap({ locations }) {
   useEffect(() => {
     const container = document.getElementById('map')
     const options = {
@@ -11,10 +12,9 @@ function Kakaomap() {
     }
     const map = new kakao.maps.Map(container, options)
 
-    var zoomControl = new kakao.maps.ZoomControl()
+    const zoomControl = new kakao.maps.ZoomControl()
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT)
 
-    // 사용자의 현재 위치를 가져와 지도 중심 좌표로 설정하는 함수
     const updateCurrentLocation = () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -22,8 +22,6 @@ function Kakaomap() {
             const lat = position.coords.latitude
             const lon = position.coords.longitude
             const locPosition = new kakao.maps.LatLng(lat, lon)
-
-            // 지도 중심을 사용자의 현재 위치로 변경
             map.setCenter(locPosition)
           },
           (err) => {
@@ -35,14 +33,58 @@ function Kakaomap() {
       }
     }
 
-    // 지도 초기화 및 사용자 위치 업데이트
-    const initKakaoMap = () => {
-      updateCurrentLocation()
+    const getCoordsByAddress = async (address) => {
+      const url = `https://dapi.kakao.com/v2/local/search/address.json?query=${address}`
+      try {
+        const response = await axios.get(url, {
+          headers: {
+            Authorization: `KakaoAK 293fd7189c569ce1cf741a0d29ab0b5e`,
+          },
+        })
+        const { documents } = response.data
+        if (documents.length > 0) {
+          const { x, y } = documents[0]
+          return { lat: y, lng: x }
+        }
+        return null
+      } catch (error) {
+        console.error('Error fetching coordinates:', error)
+        return null
+      }
     }
 
-    // 지도 초기화
+    const initKakaoMap = async () => {
+      updateCurrentLocation()
+
+      for (const location of locations) {
+        const coords = await getCoordsByAddress(
+          `${location.province} ${location.city}`,
+        )
+        if (coords) {
+          let markerImageURL = '' // 기본 마커 이미지 URL
+          if (location.weight > 96.179) {
+            markerImageURL =
+              'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png' // 무게가 96.179 초과일 때 사용할 이미지 URL
+          }
+          const markerPosition = new kakao.maps.LatLng(coords.lat, coords.lng)
+          const markerImage = markerImageURL
+            ? new kakao.maps.MarkerImage(
+                markerImageURL,
+                new kakao.maps.Size(30, 30),
+              )
+            : null
+
+          const kakaoMarker = new kakao.maps.Marker({
+            position: markerPosition,
+            image: markerImage, // 조건에 따라 다른 이미지 설정
+          })
+          kakaoMarker.setMap(map)
+        }
+      }
+    }
+
     initKakaoMap()
-  }, [])
+  }, [locations])
 
   return (
     <div
